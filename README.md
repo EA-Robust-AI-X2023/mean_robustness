@@ -69,3 +69,21 @@ pip freeze > requirements.txt
 │   └── figures      # PDF and PNG figures
 ├── scripts          # Long-running, parallel scripts
 ```
+
+### Add an experiment
+
+A experiment is a simulation of a federated learning run. It involves the following parameters:
+
+- **Datasets**: from simple tasks such as MNIST to complex datasets like ImageNette. Variable heterogeneity with the Dirichlet distribution.
+- **Models**: architectures and training hyperparameters.
+- **Gradient aggregators**: either mean aggregator or robust aggregators.
+- **Data poisoning attacks**: static label flipping, dynamic label flipping, gradient inversion with varied poisoning strengths and knowledge levels of the attacker.
+- **Gradient metrics**: heterogeneity, disturbance.
+
+Here are some miscellaneous tips when writing an experiment:
+
+- Put the experiment into `scripts/`.
+- Use [typer](https://typer.tiangolo.com/) for command-line arguments.
+- Use [loguru](https://loguru.readthedocs.io/en/stable/) for logging.
+- Use the [ByzFL Benchmark Framework](https://byzfl.epfl.ch/fed_framework/classes/benchmark.html) when only the accuracies need to be plotted. The experiments are automatically run in parallel.
+- Save figures in the `reports/figures/` directory, ideally in PDF format.
