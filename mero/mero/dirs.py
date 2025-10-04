@@ -1,6 +1,6 @@
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).parent.parent.absolute() # The project root directory
+ROOT_DIR = Path(__file__).parent.parent.parent.absolute() # The project root directory
 
 CHECKPOINTS_DIR = ROOT_DIR / "checkpoints" # Model checkpoints directory
 DATA_DIR = ROOT_DIR / "data"               # Datasets directory
