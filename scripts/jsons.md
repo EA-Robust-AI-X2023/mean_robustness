@@ -23,88 +23,68 @@ Pour Resnet-9, se référer au papier [Rethinking data heterogeneity](https://ar
 
 ### Dans un premier temps, un json de test:
 
-dirichlet_modified_1 pour reg_softmax et attaque statique:
+dirichlet_1 pour reg_softmax et attaque sign flipping:
 
-default_config = {
+{
 "benchmark_config": {
 "training_algorithm": {
 "name": "DSGD",
 "parameters": {}
 },
 "nb_steps": 10000,
-"device": "cuda",
+"device": "cpu",
 "training_seed": 0,
-"nb_training_seeds": 3,
+"nb_training_seeds": 1,
 "nb_honest_clients": 10,
-"f": [1, 2, 3, 4],
+"f": [1],
 "data_distribution_seed": 0,
 "nb_data_distribution_seeds": 1,
 "data_distribution": [
 {
-"name": "gamma_similarity_niid",
-"distribution_parameter": [1.0, 0.66, 0.33, 0.0]
+"name": "dirichlet_niid",
+"distribution_parameter": [1.0]
 }
-],
+]
 },
 "model": {
-"name": "cnn_mnist",
+"name": "logreg_mnist",
 "dataset_name": "mnist",
 "nb_labels": 10,
-"loss": "NLLLoss",
+"loss": "CrossEntropyLoss",
 "learning_rate": 0.1,
 "learning_rate_decay": 1.0,
 "milestones": []
 },
 "aggregator": [
 {
-"name": "GeometricMedian",
-"parameters": {
-"nu": 0.1,
-"T": 3
-}
+"name": "Average",
+"parameters": {}
 },
 {
 "name": "TrMean",
 "parameters": {}
 }
 ],
-"pre_aggregators": [
-{
-"name": "Clipping",
-"parameters": {}
-},
-{
-"name": "NNM",
-"parameters": {}
-}
-],
+"pre_aggregators": [],
 "honest_clients": {
 "momentum": 0.9,
 "weight_decay": 0.0001,
-"batch_size": 25
+"batch_size": 32
 },
 "attack": [
 {
 "name": "SignFlipping",
-"parameters": {}
-},
-{
-"name": "Optimal_InnerProductManipulation",
-"parameters": {}
-},
-{
-"name": "Optimal_ALittleIsEnough",
 "parameters": {}
 }
 ],
 "evaluation_and_results": {
 "evaluation_delta": 50,
 "batch_size_evaluation": 128,
-"evaluate_on_test": True,
-"store_per_client_metrics": True,
-"store_models": False,
-"data_folder": "./data",
-"results_directory": "./results"
+"evaluate_on_test": true,
+"store_per_client_metrics": true,
+"store_models": false,
+"data_folder": "../../data",
+"results_directory": "results"
 }
 }
 
@@ -115,6 +95,95 @@ Partitions: iid, dirichlet\_$\alpha=1$, noniid
 Attaques: static/dynamic
 
 Modèle: d'abord juste reg_softmax
+
+{
+"benchmark_config": {
+"training_algorithm": {
+"name": "DSGD",
+"parameters": {}
+},
+"nb_steps": 20000,
+"device": "cuda",
+"training_seed": 0,
+"nb_training_seeds": 1,
+"nb_honest_clients": 10,
+"f": [1],
+"data_distribution_seed": 0,
+"nb_data_distribution_seeds": 1,
+"data_distribution": [
+{
+"name": "dirichlet_niid_modified",
+"distribution_parameter": [, 1.0, 0.1,0.03,0.01]
+},
+{
+"name": "iid",
+}
+{
+"name": "extreme_noniid_modified",
+}
+]
+},
+"model": {
+"name": "softmax_mnist",
+"dataset_name": "mnist",
+"nb_labels": 10,
+"loss": "CrossEntropyLoss",
+"learning_rate": 0.1,
+"learning_rate_decay": 1.0, // ici 0???
+"milestones": []
+},
+"aggregator": [
+{
+"name": "Average",
+"parameters": {}
+},
+{
+"name": "TrMean",
+"parameters": {}
+},
+{
+"name": "Median",
+"parameters": {}
+},
+{
+"name": "CenteredClipping",
+"parameters": {"tau": 0.3}
+},
+{
+"name": "Faba",
+"parameters": {}
+},
+{
+"name": "Lfighter",
+"parameters": {}
+}
+],
+"pre_aggregators": [],
+"honest_clients": {
+"momentum": 0.9,
+"weight_decay": 0.01,
+"batch_size": 32
+},
+"attack": [
+{
+"name": "StaticLabelFLipping",
+"parameters": {}
+},
+{
+"name": "DynamicLabelFlipping",
+"parameters": {}
+}
+],
+"evaluation_and_results": {
+"evaluation_delta": 50,
+"batch_size_evaluation": 128,
+"evaluate_on_test": true,
+"store_per_client_metrics": true,
+"store_models": false,
+"data_folder": "../../data",
+"results_directory": "results"
+}
+}
 
 ### Ensuite, un json de reproduction des résultats complets:
 
