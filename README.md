@@ -2,6 +2,22 @@
 
 _No, Mean Aggregator is not more Robust than Robust Aggregators under reasonable assumptions._
 
+## Run experiments
+
+TO run experiments, you should first install requirements (check development section).
+
+Then:
+
+- either go to an existing experiment folder in scripts (example: cd scripts/first_tests).
+- or create your own experiment folder inside scripts. It should have :
+
+  - plots and results sub-folders
+  - a config.json file to run an experiment with byzfl
+  - plotting and running scripts (cf replication_peng_softmax folder)
+  - a readme explaining its aim
+
+  To run experiments, run "python run_experiments.py" from the folder in which your config.json is. Otherwise, byzfl will use the default config.json.
+
 ## Development
 
 The installation instructions below are compatible with Linux, MacOS and WSL.

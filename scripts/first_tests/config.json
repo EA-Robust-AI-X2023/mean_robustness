@@ -4,7 +4,7 @@
       "name": "DSGD",
       "parameters": {}
     },
-    "nb_steps": 500,
+    "nb_steps": 100,
     "device": "cpu",
     "training_seed": 1,
     "nb_training_seeds": 1,
@@ -30,7 +30,7 @@
   },
   "aggregator": [
     {
-      "name": "Average",
+      "name": "Lfighter",
       "parameters": {}
     }
   ],
@@ -48,13 +48,13 @@
     }
   ],
   "evaluation_and_results": {
-    "evaluation_delta": 50,
+    "evaluation_delta": 10,
     "batch_size_evaluation": 128,
     "evaluate_on_test": true,
     "store_per_client_metrics": true,
     "store_models": false,
     "data_folder": "../../data",
-    "results_directory": "results_tests_new_client_dynamic",
+    "results_directory": "results",
     "make_feature_measures": true,
     "compute_gradient_variance": true,
     "compute_gradient_scatterings": true,

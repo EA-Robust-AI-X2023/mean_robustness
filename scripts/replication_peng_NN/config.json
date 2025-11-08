@@ -7,11 +7,11 @@
     "nb_steps": 20000,
     "device": "gpu",
     "training_seed": 1,
-    "nb_training_seeds": 3,
+    "nb_training_seeds": 2,
     "nb_honest_clients": 9,
     "f": [1],
     "data_distribution_seed": 0,
-    "nb_data_distribution_seeds": 3,
+    "nb_data_distribution_seeds": 2,
     "data_distribution": [
       {
         "name": "dirichlet_niid_modified",
@@ -25,15 +25,26 @@
       }
     ]
   },
-  "model": {
-    "name": "softmax_mnist",
-    "dataset_name": "mnist",
-    "nb_labels": 10,
-    "loss": "CrossEntropyLoss",
-    "learning_rate": 0.01,
-    "learning_rate_decay": 0.01,
-    "milestones": []
-  },
+  "model": [
+    {
+      "name": "cnn_mnist",
+      "dataset_name": "mnist",
+      "nb_labels": 10,
+      "loss": "CrossEntropyLoss",
+      "learning_rate": 0.01,
+      "learning_rate_decay": 0.0085,
+      "milestones": []
+    },
+    {
+      "name": "mlp_mnist_peng",
+      "dataset_name": "mnist",
+      "nb_labels": 10,
+      "loss": "CrossEntropyLoss",
+      "learning_rate": 0.01,
+      "learning_rate_decay": 0.0085,
+      "milestones": []
+    }
+  ],
   "aggregator": [
     {
       "name": "Average",
