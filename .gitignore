@@ -6,6 +6,8 @@ checkpoints/*
 data/*
 !data/.gitkeep
 
+scripts/first_tests/plot/*
+
 # Mac/OSX
 .DS_Store
 
