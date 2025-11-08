@@ -9,6 +9,16 @@ data/*
 # Mac/OSX
 .DS_Store
 
+#first_tests
+scripts/first_tests/results_tests_new_client_dynamic/*
+scripts/first_tests/results_tests_new_client/*
+scripts/first_tests/results_tests_new_client_2/*
+scripts/first_tests/results_tests_modified_distributions/*
+scripts/first_tests/plot/*
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

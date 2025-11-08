@@ -47,10 +47,10 @@ default_config = {
 ],
 },
 "model": {
-"name": "cnn_mnist",
+"name": "softmax_mnist",
 "dataset_name": "mnist",
 "nb_labels": 10,
-"loss": "NLLLoss",
+"loss": "CrossEntropyLoss",
 "learning_rate": 0.1,
 "learning_rate_decay": 1.0,
 "milestones": []
@@ -116,6 +116,109 @@ Attaques: static/dynamic
 
 Modèle: d'abord juste reg_softmax
 
+{
+"benchmark_config": {
+"training_algorithm": {
+"name": "DSGD",
+"parameters": {}
+},
+"nb_steps": 20000,
+"device": "cpu",
+"training_seed": 1,
+"nb_training_seeds": 3,
+"nb_honest_clients": 9,
+"f": [1],
+"data_distribution_seed": 0,
+"nb_data_distribution_seeds": 3,
+"data_distribution": [
+{
+"name": "dirichlet_niid_modified",
+"distribution_parameter": [10.0,1.0,0.1, 0.03,0.01]
+},
+{
+"name": "iid",
+},
+{
+"name": "extreme_noniid_modified",
+}
+]
+},
+"model": {
+"name": "softmax_mnist",
+"dataset_name": "mnist",
+"nb_labels": 10,
+"loss": "CrossEntropyLoss",
+"learning_rate": 0.01,
+"learning_rate_decay": 0,
+"milestones": []
+},
+"aggregator": [
+{
+"name": "Average",
+"parameters": {}
+},
+{
+"name": "Lfighter",
+"parameters": {}
+},
+{
+"name": "Faba",
+"parameters": {}
+},
+{
+"name": "Krum",
+"parameters": {}
+},
+{
+"name": "TrMean",
+"parameters": {}
+},
+{
+"name": "CenteredClipping",
+"parameters": {
+"tau": 0.3
+}
+},
+{
+"name": "Median",
+"parameters": {
+"tau": 0.3
+}
+}
+],
+"pre_aggregators": [],
+"honest_clients": {
+"momentum": 0.9,
+"weight_decay": 0.01,
+"batch_size": 32
+},
+"attack": [
+{
+"name": "DynamicLabelFlipping",
+"p": 1.0,
+"parameters": {}
+},
+{
+"name": "StaticLabelFlipping",
+"p": 1.0,
+"parameters": {}
+}
+],
+"evaluation_and_results": {
+"evaluation_delta": 50,
+"batch_size_evaluation": 128,
+"evaluate_on_test": true,
+"store_per_client_metrics": true,
+"store_models": false,
+"data_folder": "../../data",
+"results_directory": "results_tests_new_client_dynamic",
+"make_feature_measures": true,
+"compute_gradient_variance": true,
+"compute_gradient_scatterings": true,
+"scatter_momentums": false
+}
+}
+
 ### Ensuite, un json de reproduction des résultats complets:
 
 Partitions: iid, dirichlet\_$\alpha= 0.001, 0.01, 0.03, 0.05, 0.1, 1, 10$, noniid
@@ -123,3 +226,110 @@ Partitions: iid, dirichlet\_$\alpha= 0.001, 0.01, 0.03, 0.05, 0.1, 1, 10$, nonii
 Attaques: static/dynamic
 
 Modèles: reg_softmax, MLP, CNN
+
+{
+"benchmark_config": {
+"training_algorithm": {
+"name": "DSGD",
+"parameters": {}
+},
+"nb_steps": 20000,
+"device": "gpu",
+"training_seed": 1,
+"nb_training_seeds": 3,
+"nb_honest_clients": 9,
+"f": [1],
+"data_distribution_seed": 0,
+"nb_data_distribution_seeds": 3,
+"data_distribution": [
+{
+"name": "dirichlet_niid_modified",
+"distribution_parameter": [10.0,1.0,0.1, 0.03,0.01]
+},
+{
+"name": "iid",
+},
+{
+"name": "extreme_noniid_modified",
+}
+]
+},
+"model": {
+"name": ["cnn_mnist", "mlp_mnist_peng"],
+"dataset_name": "mnist",
+"nb_labels": 10,
+"loss": "CrossEntropyLoss",
+"learning_rate": 0.01,
+"learning_rate_decay": 0,
+"milestones": []
+},
+"aggregator": [
+{
+"name": "Average",
+"parameters": {}
+},
+{
+"name": "Lfighter",
+"parameters": {}
+},
+{
+"name": "Faba",
+"parameters": {}
+},
+{
+"name": "Krum",
+"parameters": {}
+},
+{
+"name": "TrMean",
+"parameters": {}
+},
+{
+"name": "CenteredClipping",
+"parameters": {
+"tau": 0.3
+}
+},
+{
+"name": "Median",
+"parameters": {
+"tau": 0.3
+}
+}
+],
+"pre_aggregators": [],
+"honest_clients": {
+"momentum": 0.9,
+"weight_decay": 0.0085,
+"batch_size": 32
+},
+"attack": [
+{
+"name": "DynamicLabelFlipping",
+"p": 1.0,
+"parameters": {}
+},
+{
+"name": "StaticLabelFlipping",
+"p": 1.0,
+"parameters": {}
+}
+],
+"evaluation_and_results": {
+"evaluation_delta": 50,
+"batch_size_evaluation": 128,
+"evaluate_on_test": true,
+"store_per_client_metrics": true,
+"store_models": false,
+"data_folder": "../../data",
+"results_directory": "results_tests_new_client_dynamic",
+"make_feature_measures": true,
+"compute_gradient_variance": true,
+"compute_gradient_scatterings": true,
+"scatter_momentums": false
+}
+}
+
+### Ensuite, un json d'extension des résultats du papiers:
+
+tiny imagenet, batch sizes changeantes etc...

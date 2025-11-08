@@ -4,9 +4,9 @@
       "name": "DSGD",
       "parameters": {}
     },
-    "nb_steps": 300,
+    "nb_steps": 500,
     "device": "cpu",
-    "training_seed": 0,
+    "training_seed": 1,
     "nb_training_seeds": 1,
     "nb_honest_clients": 9,
     "f": [1],
@@ -15,12 +15,12 @@
     "data_distribution": [
       {
         "name": "dirichlet_niid",
-        "distribution_parameter": [1.0]
+        "distribution_parameter": [10.0]
       }
     ]
   },
   "model": {
-    "name": "SOFTMAX_MNIST_PENG",
+    "name": "softmax_mnist",
     "dataset_name": "mnist",
     "nb_labels": 10,
     "loss": "CrossEntropyLoss",
@@ -32,36 +32,19 @@
     {
       "name": "Average",
       "parameters": {}
-    },
-    {
-      "name": "Faba",
-      "parameters": {}
     }
   ],
   "pre_aggregators": [],
   "honest_clients": {
     "momentum": 0.9,
     "weight_decay": 0.0001,
-    "batch_size": 32
+    "batch_size": 1000
   },
   "attack": [
     {
-      "name": "StaticLabelFlipping",
+      "name": "DynamicLabelFlipping",
       "p": 1.0,
-      "parameters": {
-        "permutation": {
-          "0": 9,
-          "1": 8,
-          "2": 7,
-          "3": 6,
-          "4": 5,
-          "5": 4,
-          "6": 3,
-          "7": 2,
-          "8": 1,
-          "9": 0
-        }
-      }
+      "parameters": {}
     }
   ],
   "evaluation_and_results": {
@@ -71,6 +54,10 @@
     "store_per_client_metrics": true,
     "store_models": false,
     "data_folder": "../../data",
-    "results_directory": "results"
+    "results_directory": "results_tests_new_client_dynamic",
+    "make_feature_measures": true,
+    "compute_gradient_variance": true,
+    "compute_gradient_scatterings": true,
+    "scatter_momentums": false
   }
 }
