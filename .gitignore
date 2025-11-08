@@ -7,6 +7,11 @@ data/*
 !data/.gitkeep
 
 scripts/first_tests/plot/*
+scripts/first_tests/results/*
+scripts/first_tests/results_tests_new_client_dynamic/*
+scripts/replication_peng_softmax/results/*
+
+
 
 # Mac/OSX
 .DS_Store
