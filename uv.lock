@@ -2,6 +2,13 @@ version = 1
 revision = 3
 requires-python = ">=3.12"
 
+[manifest]
+members = [
+    "byzfl",
+    "mean-robustness",
+    "mero",
+]
+
 [[package]]
 name = "appnope"
 version = "0.1.4"
@@ -31,8 +38,8 @@ wheels = [
 
 [[package]]
 name = "byzfl"
-version = "0.0.11"
-source = { registry = "https://pypi.org/simple" }
+version = "0.1.0"
+source = { editable = "byzfl" }
 dependencies = [
     { name = "matplotlib" },
     { name = "numpy" },
@@ -41,9 +48,15 @@ dependencies = [
     { name = "torch" },
     { name = "torchvision" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/61/3d/ef9b1294bf90d643ae51211f7b419d0996ffd90a8e9db0fdcd68d990dc18/byzfl-0.0.11.tar.gz", hash = "sha256:f1d86e2fd0e15d81ea5d5837803e04b1b3b9e9f45bd7983c4062219d13e2199f", size = 51195, upload-time = "2025-07-22T08:32:15.349Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c5/c6/1544458983c50a1cd2b3c36207339471b2567cf61dad0e32fe1adfe8b385/byzfl-0.0.11-py3-none-any.whl", hash = "sha256:09b3cda93c78d0984637428097983b037cb6a674b448db3a4c716e2c68df7dc3", size = 56462, upload-time = "2025-07-22T08:32:13.902Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "matplotlib", specifier = ">=3.8.3" },
+    { name = "numpy", specifier = ">=1.26.4" },
+    { name = "scipy", specifier = ">=1.12.0" },
+    { name = "seaborn", specifier = ">=0.13.2" },
+    { name = "torch", specifier = ">=2.2.0" },
+    { name = "torchvision", specifier = ">=0.17.0" },
 ]
 
 [[package]]
@@ -706,31 +719,46 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "byzfl" },
-    { name = "ipynbname" },
-    { name = "loguru" },
-    { name = "typer" },
+    { name = "mero" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
+    { name = "ipynbname" },
     { name = "ipython" },
     { name = "nbformat" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "byzfl", specifier = ">=0.0.11" },
-    { name = "ipynbname", specifier = ">=2025.8.0.0" },
-    { name = "loguru", specifier = ">=0.7.3" },
-    { name = "typer", specifier = ">=0.19.2" },
+    { name = "byzfl", editable = "byzfl" },
+    { name = "mero", editable = "mero" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "ipykernel", specifier = ">=6.30.1" },
+    { name = "ipynbname", specifier = ">=2025.8.0.0" },
     { name = "ipython", specifier = ">=9.5.0" },
     { name = "nbformat", specifier = ">=5.10.4" },
+]
+
+[[package]]
+name = "mero"
+version = "0.1.0"
+source = { editable = "mero" }
+dependencies = [
+    { name = "byzfl" },
+    { name = "loguru" },
+    { name = "typer" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "byzfl", editable = "byzfl" },
+    { name = "loguru", specifier = ">=0.7.3" },
+    { name = "typer", specifier = ">=0.19.2" },
 ]
 
 [[package]]
