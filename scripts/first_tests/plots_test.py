@@ -8,5 +8,4 @@ test_accuracy_curve_modified(
     path_to_plot
 )
 
-
 plot_gradients_scattering(path_training_results, path_to_plot)

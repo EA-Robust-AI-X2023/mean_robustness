@@ -5,23 +5,27 @@
       "parameters": {}
     },
     "nb_steps": 20000,
-    "device": "gpu",
+    "device": "cuda",
     "training_seed": 1,
-    "nb_training_seeds": 3,
+    "nb_training_seeds": 1,
     "nb_honest_clients": 9,
     "f": [1],
     "data_distribution_seed": 0,
-    "nb_data_distribution_seeds": 3,
+    "nb_data_distribution_seeds": 2,
     "data_distribution": [
       {
         "name": "dirichlet_niid_modified",
-        "distribution_parameter": [10.0, 1.0, 0.1, 0.03, 0.01]
+        "distribution_parameter": [10.0, 1.0, 0.1, 0.03, 0.01, 0.001]
       },
       {
-        "name": "iid"
+        "name": "iid",
+        "distribution_parameter": 1.0
+
       },
       {
-        "name": "extreme_noniid_modified"
+        "name": "extreme_noniid_modified",
+        "distribution_parameter": 1.0
+
       }
     ]
   },
@@ -31,7 +35,7 @@
     "nb_labels": 10,
     "loss": "CrossEntropyLoss",
     "learning_rate": 0.01,
-    "learning_rate_decay": 0.01,
+    "learning_rate_decay": 0.0,
     "milestones": []
   },
   "aggregator": [
@@ -64,7 +68,6 @@
     {
       "name": "Median",
       "parameters": {
-        "tau": 0.3
       }
     }
   ],
@@ -84,11 +87,16 @@
       "name": "StaticLabelFlipping",
       "p": 1.0,
       "parameters": {}
+    },
+    {
+      "name": "NoAttack",
+      "p": 1.0,
+      "parameters": {}
     }
   ],
   "evaluation_and_results": {
-    "evaluation_delta": 50,
-    "batch_size_evaluation": 128,
+    "evaluation_delta": 100,
+    "batch_size_evaluation": 1000,
     "evaluate_on_test": true,
     "store_per_client_metrics": true,
     "store_models": false,
