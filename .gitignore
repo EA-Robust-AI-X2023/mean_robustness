@@ -8,6 +8,11 @@ data/*
 
 scripts/first_tests/plot/*
 scripts/first_tests/results/*
+scripts/first_tests/results_poisoning_test/*
+scripts/first_tests/plot_poisoning_test/*
+scripts/replication_peng_softmax_distribution_plots/results/*
+scripts/replication_peng_softmax_test_batchsize1000/results/*
+
 scripts/replication_peng_softmax/results/*
 scripts/replication_peng_NN/results/*
 
