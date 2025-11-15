@@ -75,16 +75,15 @@ pip freeze > requirements.txt
 ```bash
 ├── byzfl                 # Fork of ByzFL (git submodule)
 │   └── byzfl
-│       ├── aggregators   # ByzFL-vendored aggregators
+│       ├── aggregators   # ByzFL-vendored and our implemented aggregators
 │       ├── attacks       # ByzFL-vendored gradient attacks
 │       ├── benchmark     # Accuracy benchmarks in Byzantine environments
-│       ├── fed_framework # Framework for federated learning and Byzantine environments
+│       ├── fed_framework # Framework for federated learning, data poisoning and Byzantine environments
+|       ├── poisoning     # Data poisoning attacks
 │       └── utils         # Misc utility functions
 |
 ├── mero                  # Shared Python library for notebooks and scripts
 │   └── mero
-│       ├── aggregators   # Implemented gradient aggregators
-│       ├── attacks       # Data poisoning attacks
 │       ├── datasets      # Used datasets
 │       ├── metrics       # Gradient metrics (heterogeneity, disturbance...)
 │       ├── modeling      # Models and training hyperparameters

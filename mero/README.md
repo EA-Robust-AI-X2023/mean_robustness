@@ -6,8 +6,6 @@
 
 ```bash
 └── mero             # Shared Python library for notebooks and scripts
-    ├── aggregators  # Implemented gradient aggregators
-    ├── attacks      # Data poisoning attacks
     ├── datasets     # Used datasets
     ├── metrics      # Gradient metrics (heterogeneity, disturbance...)
     ├── modeling     # Models and training hyperparameters
