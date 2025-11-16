@@ -15,7 +15,11 @@ scripts/replication_peng_softmax_test_batchsize1000/results/*
 
 scripts/replication_peng_softmax/results/*
 scripts/replication_peng_NN/results/*
+scripts/peng_softmax_test_poisonned_share/results/*
+scripts/replication_peng_softmax_batch_size_1000/results/*
 
+
+scripts/archive/*
 
 Python-3.12.0/*
 Python-3.12.0
