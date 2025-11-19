@@ -1,5 +1,5 @@
 from byzfl.benchmark import run_benchmark
 
 if __name__ == "__main__":  # Required for multiprocessing
-    n = 24  # Number of trainings to run in parallel
+    n = 18 # Number of trainings to run in parallel
     run_benchmark(n)

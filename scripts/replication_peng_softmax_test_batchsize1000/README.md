@@ -1,1 +1,0 @@
-This folder allows to test how A/ksi vary with the batch size. I conduct the same trainings as in replication_peng_softmax, but with fewer training steps, and a batch size of 1000

@@ -9,13 +9,23 @@ data/*
 scripts/first_tests/plot/*
 scripts/first_tests/results/*
 scripts/first_tests/results_poisoning_test/*
+scripts/first_tests/results_small_training/*
+
 scripts/first_tests/plot_poisoning_test/*
 scripts/replication_peng_softmax_distribution_plots/results/*
 scripts/replication_peng_softmax_test_batchsize1000/results/*
 
+scripts/replication_peng_softmax_weight_decay_0.01/results/*
 scripts/replication_peng_softmax/results/*
+scripts/repng_NN_hyperparam_tests/results/*
+
+
+scripts/peng_NN_hyperparam_tests/results/*
+
+
 scripts/replication_peng_NN/results/*
 scripts/peng_softmax_test_poisonned_share/results/*
+scripts/peng_softmax_test_poisonned_share_lr_0.001/results/*
 scripts/replication_peng_softmax_batch_size_1000/results/*
 
 

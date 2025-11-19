@@ -1,4 +1,9 @@
-This folder is dedicated to replicating the results in Peng et al, only for the softmax regression
+This folder is dedicated to replicating the results in Peng et al, only for the softmax regression.
+
+The hyperparameters are set to match the implementation of momentum of the paper:
+lr= 0.001
+alpha_momentum=9
+weight decay = 0.001
 
 
 To run experiments in the back with ssh, use tmux:

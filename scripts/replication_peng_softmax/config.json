@@ -4,14 +4,14 @@
       "name": "DSGD",
       "parameters": {}
     },
-    "nb_steps": 20000,
+    "nb_steps": 15000,
     "device": "cuda",
     "training_seed": 1,
     "nb_training_seeds": 1,
     "nb_honest_clients": 9,
     "f": [1],
     "data_distribution_seed": 100,
-    "nb_data_distribution_seeds": 1,
+    "nb_data_distribution_seeds": 2,
     "data_distribution": [
       {
         "name": "dirichlet_niid_modified",
@@ -39,7 +39,6 @@
       {
         "name": "extreme_niid_modified",
         "distribution_parameter": "None"
-
       }
     ]
   },
@@ -76,16 +75,17 @@
       "parameters": {
       }
     },
-    {
-      "name": "Median",
+     {
+      "name": "Lfighter",
       "parameters": {
       }
     }
+
   ],
   "pre_aggregators": [],
   "honest_clients": {
     "momentum": 0.9,
-    "weight_decay": 0.01,
+    "weight_decay": 0.0,
     "batch_size": 32
   },
   "attack": [
@@ -106,7 +106,7 @@
     }
   ],
   "evaluation_and_results": {
-    "evaluation_delta": 100,
+    "evaluation_delta": 200,
     "batch_size_evaluation": 1000,
     "evaluate_on_test": true,
     "store_per_client_metrics": true,
