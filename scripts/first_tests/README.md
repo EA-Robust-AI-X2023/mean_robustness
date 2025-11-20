@@ -9,3 +9,6 @@ For this:
 - First disinstall byzfl: pip uninstall byzfl -y (on windows)
 
 - Then install your branch : pip install git+https://github.com/EA-Robust-AI-X2023/byzfl.git@branch-name
+
+
+For now, the tests ran in this repository aim at testing fed averaging in label separation for many different seeds, to see if we can attain the 82% accuracy under static flipping attacks as in the paper.

@@ -1,0 +1,65 @@
+{
+  "benchmark_config": {
+    "training_algorithm": {
+      "name": "DSGD",
+      "parameters": {}
+    },
+    "nb_steps": 20000,
+    "device": "cuda",
+    "training_seed": 1,
+    "nb_training_seeds": 2,
+    "nb_honest_clients": 9,
+    "f": [1],
+    "data_distribution_seed": 100,
+    "nb_data_distribution_seeds": 2,
+    "size_train_set": 1.0,
+    "data_distribution": [
+      {
+        "name": "extreme_niid_modified",
+        "distribution_parameter": "None"
+
+      }
+    ]
+  },
+  "model": {
+    "name": "softmax_mnist",
+    "dataset_name": "mnist",
+    "nb_labels": 10,
+    "loss": "CrossEntropyLoss",
+    "learning_rate": 0.001,
+    "learning_rate_decay": 0.1,
+    "milestones": []
+  },
+  "aggregator": [
+   {
+      "name": "Average",
+      "parameters": {}
+    }],
+  "pre_aggregators": [],
+  "honest_clients": {
+    "momentum": 0.9,
+    "weight_decay": 0.0001,
+    "batch_size": [32]
+  },
+  "attack": [
+    {
+      "name": "StaticLabelFlipping",
+      "p": 1.0,
+      "parameters": {}
+}],
+  "evaluation_and_results": {
+    "evaluation_delta": 100,
+    "batch_size_evaluation": 1000,
+    "evaluate_on_test": true,
+    "store_per_client_metrics": true,
+    "store_models": false,
+    "data_folder": "../../data",
+    "results_directory": "results",
+    "make_feature_measures": false,
+    "compute_gradient_variance": false,
+    "compute_gradient_scatterings": true,
+    "scatter_momentums": false,
+    "save_worker_distributions": true
+
+  }
+}
