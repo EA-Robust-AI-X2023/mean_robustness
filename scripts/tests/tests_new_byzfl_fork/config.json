@@ -4,7 +4,7 @@
       "name": "DSGD",
       "parameters": {}
     },
-    "nb_steps": 7000,
+    "nb_steps": 10000,
     "device": "cuda",
     "training_seed": 0,
     "nb_training_seeds": 1,
@@ -42,6 +42,17 @@
     {
       "name": "Lfighter",
       "parameters": {
+      }
+    },
+    {
+      "name": "Average",
+      "parameters": {
+      }
+    },
+    {
+      "name": "CenteredClipping",
+      "parameters": {
+        "tau": 0.3
       }
     }
   ],

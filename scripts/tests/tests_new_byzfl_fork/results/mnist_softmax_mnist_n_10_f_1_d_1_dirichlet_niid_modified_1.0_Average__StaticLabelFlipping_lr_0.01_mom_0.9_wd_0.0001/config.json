@@ -19,7 +19,7 @@
             "name": "DSGD",
             "parameters": {}
         },
-        "nb_steps": 7000
+        "nb_steps": 10000
     },
     "model": {
         "name": "softmax_mnist",

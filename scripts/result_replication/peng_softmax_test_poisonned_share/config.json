@@ -38,15 +38,15 @@
     "milestones": []
   },
   "aggregator": [
-    {
-      "name": "Average",
-      "parameters": {}
-    },
-    {
+     {
       "name": "Faba",
       "parameters": {}
     },
     {
+      "name": "Average",
+      "parameters": {}
+    },
+   
       "name": "Lfighter",
       "parameters": {
       }
@@ -61,7 +61,7 @@
   "pre_aggregators": [],
   "honest_clients": {
     "momentum": 0.9,
-    "weight_decay": 0.0,
+    "weight_decay": 0.0001,
     "batch_size": 32
   },
   "attack": [
@@ -73,6 +73,10 @@
     {
       "name": "DynamicLabelFlipping",
       "p": 1.0,
+      "parameters": {}
+    },
+    {
+      "name": "NoAttack",
       "parameters": {}
     }
   ],
