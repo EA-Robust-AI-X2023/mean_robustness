@@ -10,3 +10,9 @@ test_accuracy_curve_modified(
 
 
 plot_gradients_scattering(path_training_results, path_to_plot)
+
+evaluate_impact_exclusivity(path_training_results,
+    path_to_plot,
+    colors=colors,
+    tab_sign=tab_sign,
+    markers=markers)

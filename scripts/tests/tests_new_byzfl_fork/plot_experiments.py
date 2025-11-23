@@ -1,9 +1,7 @@
-from byzfl.benchmark.evaluate_results import test_accuracy_curve_modified,test_accuracy_curve, loss_heatmap, plot_gradients_scattering
+from byzfl.benchmark.evaluate_results import test_accuracy_curve_modified,test_accuracy_curve, loss_heatmap, plot_gradients_scattering, evaluate_impact_exclusivity
 
 path_training_results = "results"
 path_to_plot = "plot"
-
-
 
 colors = [
     (0.000, 0.447, 0.741),   # blue
@@ -29,18 +27,20 @@ tab_sign = [
     (0, (5, 10)),    # very sparse dash
     'solid'
 ]
-markers = [
-    'o',   # circle
-    's',   # square
-    '^',   # triangle up
-    'v',   # triangle down
-    '<',   # triangle left
-    '>',   # triangle right
-    'D',   # diamond
-    'P',   # plus-filled
-    'X',   # x-filled
-    '*'    # star
-]
+# markers = [
+#     'o',   # circle
+#     's',   # square
+#     '^',   # triangle up
+#     'v',   # triangle down
+#     '<',   # triangle left
+#     '>',   # triangle right
+#     'D',   # diamond
+#     'P',   # plus-filled
+#     'X',   # x-filled
+#     '*'    # star
+# ]
+
+markers = ['' for i in range(20)]
 
 
 test_accuracy_curve_modified(
@@ -48,9 +48,16 @@ test_accuracy_curve_modified(
     path_to_plot,
     colors=colors,
     tab_sign=tab_sign,
-    markers=markers
+    markers=markers,
+    min_accuracy=0.6
 )
 
 
-plot_gradients_scattering(path_training_results, path_to_plot)
+# plot_gradients_scattering(path_training_results, path_to_plot)
 
+
+# evaluate_impact_exclusivity(path_training_results,
+#     path_to_plot,
+#     colors=colors,
+#     tab_sign=tab_sign,
+#     markers=markers)

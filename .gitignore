@@ -5,6 +5,7 @@ checkpoints/*
 # Datasets
 data/*
 !data/.gitkeep
+scripts/data/*
 
 
 scripts/archive/*

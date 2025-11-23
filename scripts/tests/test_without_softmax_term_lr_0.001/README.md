@@ -1,1 +1,0 @@
-THis folder is dedicated to test softmax regression in noniid settings, after correction fo the implementaiton of softmax regression.
