@@ -4,66 +4,55 @@
       "name": "DSGD",
       "parameters": {}
     },
-    "nb_steps": 10000,
+    "nb_steps": 20000,
     "device": "cuda",
     "training_seed": 1,
     "nb_training_seeds": 1,
     "nb_honest_clients": 9,
     "f": [1],
     "data_distribution_seed": 0,
-    "nb_data_distribution_seeds": 1,
+    "nb_data_distribution_seeds": 2,
+    "size_train_set": 1.0,
+    "set_honest_clients_as_clients": false,
     "data_distribution": [
-      {
-        "name": "dirichlet_niid_modified",
-        "distribution_parameter": 1.0,
-        "min_size": 10
-      },
        {
         "name": "dirichlet_niid_modified",
         "distribution_parameter": 0.1,
-        "min_size": 2400
+        "min_size": 3000
       },
        {
         "name": "dirichlet_niid_modified",
         "distribution_parameter": 0.03,
-        "min_size": 2400
+        "min_size": 3000
       },
-      {
-        "name": "iid",
-        "distribution_parameter": "None"
-
-      },
-      {
-        "name": "extreme_niid_modified",
-        "distribution_parameter": "None"
+       {
+        "name": "dirichlet_niid_modified",
+        "distribution_parameter": 0.05,
+        "min_size": 3000
       }
     ]
   },
   "model": 
     {
-      "name": "cnn_cifar10_peng",
-      "dataset_name": "cifar10",
+      "name": "mlp_mnist_peng",
+      "dataset_name": "mnist",
       "nb_labels": 10,
       "loss": "CrossEntropyLoss",
       "learning_rate": 0.01,
-      "learning_rate_decay": 0.0085,
+      "learning_rate_decay": 0.1,
       "milestones": []
     },
   "aggregator": [
-    {
-      "name": "Lfighter",
-      "parameters": {}
-    },
     {
       "name": "Average",
       "parameters": {}
     },
     {
-      "name": "Faba",
+      "name": "Lfighter",
       "parameters": {}
     },
     {
-      "name": "TrMean",
+      "name": "Faba",
       "parameters": {}
     },
     {
@@ -76,7 +65,7 @@
   "pre_aggregators": [],
   "honest_clients": {
     "momentum": 0.9,
-    "weight_decay": 0.01,
+    "weight_decay": 0.0085,
     "batch_size": 32
   },
   "attack": [
@@ -87,11 +76,6 @@
     },
     {
       "name": "StaticLabelFlipping",
-      "p": 1.0,
-      "parameters": {}
-    },
-    {
-      "name": "NoAttack",
       "p": 1.0,
       "parameters": {}
     }
