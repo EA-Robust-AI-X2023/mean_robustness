@@ -17,7 +17,6 @@ scripts/tests/*
 scripts/main_results/lfighter_comparisons/*
 scripts/main_results/test_bacth_size/*
 scripts/main_results/test_central_momentum/*
-scripts/main_results/replicate_softmax_multiple_seeds/*
 scripts/result_replication/*
 
 
