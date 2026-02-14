@@ -35,8 +35,8 @@
         ]
     },
     "model": {
-        "name": "cnn_cifar10_peng",
-        "dataset_name": "cifar10",
+        "name": "mlp_mnist_peng",
+        "dataset_name": "mnist",
         "nb_labels": 10,
         "loss": "CrossEntropyLoss",
         "learning_rate": 0.01,

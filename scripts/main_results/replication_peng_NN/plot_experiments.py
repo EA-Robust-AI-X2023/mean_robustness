@@ -1,4 +1,4 @@
-from byzfl.benchmark.evaluate_results import test_accuracy_curve_modified,plot_gradients_scattering, loss_heatmap, plot_workers_feature_variance, evaluate_impact_exclusivity, evaluate_impact_subset_size, evaluate_impact_exclusivity_all_in_one_test
+from byzfl.benchmark.evaluate_results import test_accuracy_curve_modified,plot_gradients_scattering, loss_heatmap, plot_workers_feature_variance, evaluate_impact_exclusivity, evaluate_impact_subset_size, evaluate_impact_exclusivity_adaptive_bins, compute_exclusivity, compute_entropy
 
 path_training_results = "results"
 path_to_plot = "plot"
@@ -43,33 +43,33 @@ markers = [
 # markers = ['' for _ in range(15)]
 
 
-test_accuracy_curve_modified(
-    path_training_results,
+# test_accuracy_curve_modified(
+#     path_training_results,
+#     path_to_plot,
+#     colors=colors,
+#     tab_sign=tab_sign,
+#     markers=markers,
+#     min_accuracy=0.6,
+#     plot_std=True
+# )
+
+
+# plot_gradients_scattering(path_training_results, path_to_plot)
+
+# evaluate_impact_exclusivity(path_training_results,
+#     path_to_plot,
+#     colors=colors,
+#     tab_sign=tab_sign,
+#     markers=markers)
+
+# evaluate_impact_subset_size(path_training_results,
+#     path_to_plot,
+#     colors=colors,
+#     tab_sign=tab_sign,
+#     markers=markers)
+
+evaluate_impact_exclusivity_adaptive_bins(path_training_results,
     path_to_plot,
-    colors=colors,
-    tab_sign=tab_sign,
-    markers=markers,
-    min_accuracy=0,
-    plot_std=True
-)
-
-
-plot_gradients_scattering(path_training_results, path_to_plot)
-
-evaluate_impact_exclusivity(path_training_results,
-    path_to_plot,
-    colors=colors,
-    tab_sign=tab_sign,
-    markers=markers)
-
-evaluate_impact_subset_size(path_training_results,
-    path_to_plot,
-    colors=colors,
-    tab_sign=tab_sign,
-    markers=markers)
-
-evaluate_impact_exclusivity_all_in_one_test(path_training_results,
-    path_to_plot,
-    colors=colors,
-    tab_sign=tab_sign,
-    markers=markers)
+    exclusivity_computation=compute_exclusivity,
+    plot_regression=True
+    )
