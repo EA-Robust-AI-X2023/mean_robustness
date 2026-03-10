@@ -43,29 +43,29 @@ markers = [
 # markers = ['' for _ in range(15)]
 
 
-test_accuracy_curve_modified(
-    path_training_results,
-    path_to_plot,
-    colors=colors,
-    tab_sign=tab_sign,
-    markers=markers,
-    min_accuracy=0.6,
-    plot_std=True
-)
+# test_accuracy_curve_modified(
+#     path_training_results,
+#     path_to_plot,
+#     colors=colors,
+#     tab_sign=tab_sign,
+#     markers=markers,
+#     min_accuracy=0.6,
+#     plot_std=True
+# )
 
 
 # plot_gradients_scattering(path_training_results, path_to_plot)
 
-# evaluate_impact_exclusivity_adaptive_bins(path_training_results,
-#     path_to_plot,
-#     exclusivity_computation=compute_entropy,
-#     plot_regression=False
-#     )
+evaluate_impact_exclusivity_adaptive_bins(path_training_results,
+    path_to_plot,
+    exclusivity_computation=compute_entropy,
+    plot_regression=False
+    )
 
-# evaluate_impact_exclusivity_adaptive_bins(path_training_results,
-#     path_to_plot,
-#     exclusivity_computation=compute_exclusivity,
-#     plot_regression=False
-#     )
+evaluate_impact_exclusivity_adaptive_bins(path_training_results,
+    path_to_plot,
+    exclusivity_computation=compute_exclusivity,
+    plot_regression=False
+    )
 
 # evaluate_per_class_accuracies(path_training_results, path_to_plot+"/acc_study")
